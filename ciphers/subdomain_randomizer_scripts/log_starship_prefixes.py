@@ -1,12 +1,12 @@
 8#!/usr/bin/python
 # 
-# Filename:  log_subspace_prefixes.py
+# Filename:  log_starship_prefixes.py
 #
 # Version: 1.0.0
 #
 # Author:  Professor James Moriarty
 #
-# Summary:  Appends or removes random 8-digit string plus ".communications.starfleet.federation.subspace" 
+# Summary:  Appends or removes random 8-digit string plus ".starship.starfleet.federation.subspace" 
 # to each line of a file that's been Cloakified using log_subspace_prefixes cipher.
 #
 # Description:  
@@ -19,7 +19,7 @@ gCharList = "abcdefghijklmnopqrstuvwxyz0123456789"
 
 if ( len(sys.argv) != 2 ):
 
-	print "usage: subspace_prefixes.py <cloakedFilename>"
+	print "usage: starship_prefixes.py <cloakedFilename>"
 	print
 	exit
 
@@ -40,6 +40,6 @@ else:
                 subdomainNoise = subdomainNoise + gCharList[ (random.randint(0,35)) ]
                 count = count + 1
 
-            subdomainNoise = subdomainNoise + ".communications.starfleet.federation.subspace"
+            subdomainNoise = "NCC-" + subdomainNoise + ".starship.starfleet.federation.subspace"
 
             file.write( i + subdomainNoise + "\n" )
