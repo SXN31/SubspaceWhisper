@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # 
-# Filename:  cdn_optimizely_prefixes.py
+# Filename:  borg_prefixes.py
 #
 # Version: 1.0.0
 #
-# Author:  Joe Gervais (TryCatchHCF)
+# Author:  Professor James Moriarty
 #
-# Summary:  Appends or removes random 6-digit string plus ".cdn.optimizely" to
+# Summary:  Appends or removes random 6-digit string plus ".borg.subspace" to
 # each line of a file that's been Cloakified using cdn_optimizely_prefixes cipher.
 #
 # Description:  
@@ -17,7 +17,7 @@ import os, sys, getopt, random
 
 if ( len(sys.argv) != 2 ):
 
-	print "usage: cdn_optimizely_prefixes.py <cloakedFilename>"
+	print "usage: borg_prefixes.py <cloakedFilename>"
 	print
 	exit
 
@@ -38,7 +38,7 @@ else:
                 subdomainNoise = subdomainNoise + str( random.randint(0,9))
                 count = count + 1
 
-            subdomainNoise = subdomainNoise + ".cdn.optimizely.com"
+            subdomainNoise = subdomainNoise + ".tertiaryadjunct.trimatrix942.unimatrix01.subspace"
 
             file.write( i + subdomainNoise + "\n" )
 

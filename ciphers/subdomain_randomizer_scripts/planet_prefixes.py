@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # 
-# Filename:  log_optimizely_prefixes.py
+# Filename:  planet_prefixes.py
 #
 # Version: 1.0.0
 #
-# Author:  Joe Gervais (TryCatchHCF)
+# Author:  Professor James Moriarty
 #
-# Summary:  Appends or removes random 8-digit string plus ".log.optimizely.com" 
-# to each line of a file that's been Cloakified using log_optimizely_prefixes cipher.
+# Summary:  Appends or removes random 8-digit string plus ".federation.subspace" 
+# to each line of a file that's been Cloakified using planet_prefixes cipher.
 #
 # Description:  
 #
@@ -16,7 +16,7 @@ import os, sys, getopt, random
 
 if ( len(sys.argv) != 2 ):
 
-	print "usage: log_optimizely_prefixes.py <cloakedFilename>"
+	print "usage: planet_prefixes.py <cloakedFilename>"
 	print
 	exit
 
@@ -37,7 +37,7 @@ else:
                 subdomainNoise = subdomainNoise + str(random.randint(0,9))
                 count = count + 1
 
-            subdomainNoise = subdomainNoise + ".log.optimizely.com"
+            subdomainNoise = subdomainNoise + ".planet.federation.subspace"
 
             file.write( i + subdomainNoise + "\n" )
 

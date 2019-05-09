@@ -1,14 +1,14 @@
 #!/usr/bin/python
 # 
-# Filename:  akstat_io_prefixes.py
+# Filename:  romulan_prefixes.py
 #
-# Version: 1.0.0
+# Version: 1.0.1
 #
-# Author:  Joe Gervais (TryCatchHCF)
+# Author:  Professor James Moriarty
 #
-# Summary:  Appends or removes random 4-char string of [a-z,0-9] plus 
-# ".akstat.io" to each line of a file that's been Cloakified using 
-# akstat_prefixes cipher.
+# Summary:  Appends or removes random 6-char string of [a-z,0-9] plus 
+# ".cloudfront.net" to each line of a file that's been Cloakified using 
+# cloudfront_prefixes cipher.
 #
 # Description:  
 #
@@ -19,7 +19,7 @@ gCharList = "abcdefghijklmnopqrstuvwxyz0123456789"
 
 if ( len(sys.argv) != 2 ):
 
-	print "usage: akstat_io_prefixes.py <cloakedFilename>"
+	print "usage: romulan_prefixes.py <cloakedFilename>"
 	print
 	exit
 
@@ -32,15 +32,15 @@ else:
     with open( sys.argv[1], "w" ) as file:
 
         for i in cloakedFile:
-            
+
             count = 0
             subdomainNoise = ""
 
-            while ( count < 4 ):
+            while ( count < 7 ):
                 subdomainNoise = subdomainNoise + gCharList[ (random.randint(0,35)) ]
                 count = count + 1
-                    
-            subdomainNoise = subdomainNoise + ".akstat.io"
+
+            subdomainNoise = subdomainNoise + ".stareempire.romulan.subspace"
 
             file.write( i + subdomainNoise + "\n" )
 

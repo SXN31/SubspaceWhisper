@@ -1,14 +1,14 @@
 #!/usr/bin/python
 # 
-# Filename:  cloudfront_prefixes.py
+# Filename:  fed_newsservice.py
 #
 # Version: 1.0.0
 #
-# Author:  Joe Gervais (TryCatchHCF)
+# Author:  Professor James Moriarty
 #
-# Summary:  Appends or removes random 6-char string of [a-z,0-9] plus 
-# ".cloudfront.net" to each line of a file that's been Cloakified using 
-# cloudfront_prefixes cipher.
+# Summary:  Appends or removes random 4-char string of [a-z,0-9] plus 
+# ".newsservice.federation.subspace" to each line of a file that's been Cloakified using 
+# akstat_prefixes cipher.
 #
 # Description:  
 #
@@ -19,7 +19,7 @@ gCharList = "abcdefghijklmnopqrstuvwxyz0123456789"
 
 if ( len(sys.argv) != 2 ):
 
-	print "usage: cloudfront_prefixes.py <cloakedFilename>"
+	print "usage: fed_newsservice_prefixes.py <cloakedFilename>"
 	print
 	exit
 
@@ -32,15 +32,15 @@ else:
     with open( sys.argv[1], "w" ) as file:
 
         for i in cloakedFile:
-
+            
             count = 0
             subdomainNoise = ""
 
-            while ( count < 7 ):
+            while ( count < 4 ):
                 subdomainNoise = subdomainNoise + gCharList[ (random.randint(0,35)) ]
                 count = count + 1
-
-            subdomainNoise = subdomainNoise + ".cloudfront.net"
+                    
+            subdomainNoise = subdomainNoise + ".newsservice.federation.subspace"
 
             file.write( i + subdomainNoise + "\n" )
 
