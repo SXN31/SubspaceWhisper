@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # 
-# Filename:  starship_prefixes.py
+# Filename:  starfleet_prefixes.py
 #
 # Version: 1.0.0
 #
 # Author:  Professor James Moriarty
 #
 # Summary:  Appends or removes random 8-digit string plus ".commnet1.starfleet.federation.subspace" 
-# to each line of a file that's been Cloakified using log_starship_prefixes cipher.
+# to each line of a file that's been Cloakified using log_starfleet_prefixes cipher.
 #
 # Description:  
 #
@@ -15,11 +15,11 @@
 
 import os, sys, getopt, random
 
-gCharList = "0123456789"
+gCharList = "abcdefghijklmnopqrstuvwxyz0123456789"
 
 if ( len(sys.argv) != 2 ):
 
-	print "usage: starship_prefixes.py <cloakedFilename>"
+	print "usage: starfleet_prefixes.py <cloakedFilename>"
 	print
 	exit
 
@@ -37,9 +37,9 @@ else:
             subdomainNoise = ""
 
             while ( count < 7 ):
-                subdomainNoise = subdomainNoise + gCharList[ (random.randint(0,9)) ]
+                subdomainNoise = subdomainNoise + gCharList[ (random.randint(0,35)) ]
                 count = count + 1
 
-            subdomainNoise = "-NCC-" + subdomainNoise + ".commnet1.starfleet.federation.subspace"
+            subdomainNoise = subdomainNoise + ".commnet1.starfleet.federation.subspace"
 
             file.write( i + subdomainNoise + "\n" )

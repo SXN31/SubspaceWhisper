@@ -474,7 +474,7 @@ def SelectAndGenerateRandomFQDNs( sourceFile, cloakedFile ):
 
 def SelectAndGenerateUniqueRepeatingFQDNs( sourceFile, cloakedFile ):
 
-	titleArray = [ "Mr", "Dr", "Sir", "Prof", "Lord", "Capt", "Duke" ]
+	titleArray = [ "Mr", "Dr", "Sir", "Prof", "Lord", "Capt", "Duke", "Admiral", "Ser", "General", "Lt. Commander", "Ensign", "Cadet" ]
 
 	cipherNum = SelectCipher( gRepeatedSubdomainFQDNCipherFiles )
 
