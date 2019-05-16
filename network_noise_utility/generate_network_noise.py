@@ -1,5 +1,5 @@
 
-import os
+import os, random, time
 
 os.system("echo test")
 
@@ -21,6 +21,8 @@ with open("network.txt", 'r') as n:
             final_list.append(l4.lower())
 
 i = 0
+random.shuffle(final_list)
+print "=================================="
 for item in final_list:
     #print i
     i+=1
@@ -35,3 +37,4 @@ for item in final_list:
     command = "wget "+item+""
     #os.system(command)
     print command
+    time.sleep(random.uniform(.1,2))
