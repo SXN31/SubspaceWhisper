@@ -13,7 +13,7 @@
 # Summary:  Combines text-based steganography (via Cloakify) and DNS queries
 # to exfiltrate / transfer data to any system that is able to capture a copy
 # of the DNS queries along the DNS resolution path. Captured pcap can then be
-# loaded into packetWhisper.py, which then extracts the encoded queries and
+# loaded into SubspaceWhisper.py, which then extracts the encoded queries and
 # restores (Decloakify) the payload.
 #
 # Primary use cases are defeating attribution (no direct connection to an
@@ -26,7 +26,7 @@
 # file type in a list of Fully Qualified Domain Names (FQDNs), selected from
 # list of ciphers by the user.
 #
-# packetWhisper then generates seqential DNS queries for each FQDN, which
+# SubspaceWhisper then generates seqential DNS queries for each FQDN, which
 # propagates the DNS query along the DNS resolution path.
 #
 # To capture the data, you just need visibility of the network traffic along 
@@ -34,7 +34,7 @@
 # system capturing in promiscuous mode, or access to network appliances along 
 # the route, including external to the network / organization of origination.
 #
-# The captured pcap file is then loaded into packetWhisper, which parses
+# The captured pcap file is then loaded into SubspaceWhisper, which parses
 # the pcap using the matching cipher used to encode during transmission.
 # The ciphered data is extracted from the pcap and then Decloakified to 
 # restore the file to its original form.
@@ -128,7 +128,7 @@ def CloakAndTransferFile():
 
 	while ( invalidSelection ):
 
-		choice = raw_input( "Begin PacketWhisper transfer of cloaked file? (y/n): " )
+		choice = raw_input( "Begin SubspaceWhisper transfer of cloaked file? (y/n): " )
 
 		if choice == "y" or choice == "n":
 
@@ -295,7 +295,7 @@ def SelectPacketWhisperMode( sourceFile, cloakedFile ):
 	while ( notDone ): 
 
 		print ""
-		print "=======  Select PacketWhisper Transfer Mode  ======="
+		print "=======  Select SubspaceWhisper Transfer Mode  ======="
 		print ""
 		print "1) Random Subdomain FQDNs  (Recommended - avoids DNS caching, overcomes NAT)"
 		print "2) Unique Repeating FQDNs  (DNS may cache, but overcomes NAT)"
@@ -351,7 +351,7 @@ def ModeHelp():
 
 	print ""
 	print ""
-	print "==========  Help: Select PacketWhisper Transfer Mode  =========="
+	print "==========  Help: Select SubspaceWhisper Transfer Mode  =========="
 	print ""
 	print "==== Unique Random Subdomain FQDNs ===="
 	print ""
@@ -591,7 +591,7 @@ def TransferCloakedFile( cloakedFile, queryDelay ):
 #
 # "But why not just use 'dnspython'?" Because it's one more thing to have
 # to import, brings a lot of baggage with it, and that's not how I like 
-# my operational tools to be structured. The way PacketWhisper is 
+# my operational tools to be structured. The way SubspaceWhisper is 
 # structured, I can get it running on a limited shell host just by 
 # tar'ing up the project and extracting on the target host.
 #
@@ -669,7 +669,7 @@ def ExtractDNSQueriesFromPCAP( pcapFile, osStr ):
 #
 # ExtractPayloadFromDNSQueries( dnsQueriesFilename, cipherFilename, cipherTag, isRandomized )
 #
-# The fun stuff. Identify the PacketWhisper FQDN ciphers in the 
+# The fun stuff. Identify the SubspaceWhisper FQDN ciphers in the 
 # collection of DNS queries, and reconstruct the Cloakified payload file
 # with the matches.
 #
@@ -835,7 +835,7 @@ def ExtractCapturedPayload():
 
 	# cipherTag is extra identifying information associated with an FQDN cipher.
 	# Necessary in cases where there is a risk of duplicate substrings in the
-	# pcap file that aren't actually part of a PacketWhisper cipher, usually
+	# pcap file that aren't actually part of a SubspaceWhisper cipher, usually
 	# due to bad luck or using the Common Domains cipher.
 
 	cipherTag = ""
@@ -880,7 +880,7 @@ def ExtractCapturedPayload():
 			print ""
 			print "!!! Error: Common FQDN cipher selected, but knock sequence not found"
 			print "!!!        in PCAP file. Unable to determine which DNS queries are"
-			print "!!!        from the PacketWhisper client."
+			print "!!!        from the SubspaceWhisper client."
 			print ""
 
 			return
@@ -918,7 +918,7 @@ def SelectCipherForExtraction():
 	while ( notDone ): 
 
 		print ""
-		print "=======  Select PacketWhisper Cipher Used For Transfer  ======="
+		print "=======  Select SubspaceWhisper Cipher Used For Transfer  ======="
 		print ""
 		print "1) Random Subdomain FQDNs  (example: d1z2mqljlzjs58.cloudfront.net)"
 		print "2) Unique Repeating FQDNs  (example: John.Whorfin.yoyodyne.com)"
@@ -1086,7 +1086,7 @@ def TestDNSAccess():
 	except:
 		print "!!! Warning: Error while calling 'nslookup'"
 		print ""
-		print "!!! PacketWhisper transfer will likely fail."
+		print "!!! SubspaceWhisper transfer will likely fail."
 		print ""
 
 	choice = raw_input("Press return to continue... ")
@@ -1147,14 +1147,14 @@ def Help():
 
 	print ""
 	print ""
-	print "=====================  Using PacketWhisper  ====================="
+	print "=====================  Using SubspaceWhisper  ====================="
 	print ""
 	print "Project Home: https://github.com/TryCatchHCF/PacketWhisper"
 	print ""
 	print "Summary:  Combines text-based steganography (via Cloakify) and DNS queries"
 	print "to exfiltrate / transfer data to any system that is able to capture a copy"
 	print "of the DNS queries along the DNS resolution path. Captured pcap can then be"
-	print "loaded into packetWhisper.py, which then extracts the encoded queries and"
+	print "loaded into SubspaceWhisper.py, which then extracts the encoded queries and"
 	print "restores (Decloakify) the payload."
 	print ""
 	print "Primary use cases are defeating attribution (no direct connection to an"
@@ -1165,9 +1165,9 @@ def Help():
 	print "It will give you a good overview of the key concepts, as well as use"
 	print "cases, and issues / defender mitigations that may get in your way."
 	print ""
-	print "As a quick test, run PacketWhisper from a VM, then send a file while doing"
+	print "As a quick test, run SubspaceWhisper from a VM, then send a file while doing"
 	print "a packet capture on the VM's network interface via the host system. You can"
-	print "then load the PCAP file into whichever PacketWhisper instance is convenient"
+	print "then load the PCAP file into whichever SubspaceWhisper instance is convenient"
 	print "to decode the file. Just remember it's not a speedy transfer. Smaller files"
 	print "and patience are your friend."
 	print ""
@@ -1177,7 +1177,7 @@ def Help():
 	print "file type in a list of Fully Qualified Domain Names (FQDNs), selected from"
 	print "list of ciphers by the user."
 	print ""
-	print "PacketWhisper then generates seqential DNS queries for each FQDN, which"
+	print "SubspaceWhisper then generates seqential DNS queries for each FQDN, which"
 	print "propagates the DNS query along the DNS resolution path."
 	print ""
 	print "To capture the data, you just need visibility of the network traffic along"
@@ -1186,7 +1186,7 @@ def Help():
 	print "appliances along the DNS query path, including external to the organization"
 	print "of origination."
 	print ""
-	print "The captured pcap file is then loaded into PacketWhisper on whatever system"
+	print "The captured pcap file is then loaded into SubspaceWhisper on whatever system"
 	print "is convenient. It then parses the pcap file using the matching cipher used"
 	print "to encode during transmission. The ciphered data is extracted from the pcap"
 	print "and then Decloakified to restore the file to its original form."
@@ -1201,9 +1201,9 @@ def Help():
 	print ""
 	print "=====  NOTE: NOT A HIGH-BANDWIDTH TRANSFER METHOD  ====="
 	print ""
-	print "Not a high-bandwidth transfer method. PacketWhisper relies on DNS queries,"
+	print "Not a high-bandwidth transfer method. SubspaceWhisper relies on DNS queries,"
 	print "which are UDP-based, meaning order of delivery (or even successful delivery)"
-	print "of the request is not guranteed. For this reason, PacketWhisper by default"
+	print "of the request is not guranteed. For this reason, SubspaceWhisper by default"
 	print "adds a small (half-second) delay between each DNS query. This will safely"
 	print "transfer payloads at a rate of about 7.2K per hour (120 bytes per minute)"
 	print "based on the size of the original payload, not the Cloakified output file."
@@ -1217,16 +1217,16 @@ def Help():
 	print ""
 	print "=====  NOTE: NOT A SECURE ENCRYPTION SCHEME  ====="
 	print ""
-	print "PacketWhisper is not a secure encryption scheme. It's vulnerable to"
+	print "SubspaceWhisper is not a secure encryption scheme. It's vulnerable to"
 	print "frequency analysis attacks. Use the 'Unique Random Subdomain FQDNs'"
 	print "category of ciphers to add entropy and help degrade frequency analysis"
 	print "attacks. If payload secrecy is required, be sure to encrypt the payload"
-	print "before using PacketWhisper to process it."
+	print "before using SubspaceWhisper to process it."
 	print ""
 	print "=====  NOTE: DNS IS DNS  ====="
 	print ""
 	print "Different OS's have different DNS caching policies, etc. Networks may be"
-	print "down, isolated, etc. PacketWhisper includes a quick manual check to see if"
+	print "down, isolated, etc. SubspaceWhisper includes a quick manual check to see if"
 	print "it can resolve common FQDNs, but DNS is often a messy business. Remember"
 	print "the old IT troubleshooting mantra: 'It's always DNS.'"
 
@@ -1286,7 +1286,7 @@ def MainMenu():
 	while ( notDone ): 
 
 		print ""
-		print "====  PacketWhisper Main Menu  ===="
+		print "====  SubspaceWhisper Main Menu  ===="
 		print ""
 		print "1) Transmit File via DNS"
 		print "2) Extract File from PCAP"
@@ -1324,7 +1324,7 @@ def MainMenu():
 	
 	# Wherever you are on this floating space orb we call home, I hope you are well
 
-	byeArray = ("Bye!", "Ciao!", "Adios!", "Aloha!", "Hei hei!", "Bless bless!", "Hej da!", "Tschuss!", "Adieu!", "Cheers!")
+	byeArray = ("Bye!", "Ciao!", "Adios!", "Aloha!", "Hei hei!", "Bless bless!", "Hej da!", "Tschuss!", "Adieu!", "Cheers!", "Peace and long life.", "Live long and prosper.", "Dif tor heh smusma", "Qapla!,", "maj ram", "ylnajchu", "Jolan-tru", "bjavt vatub", "Peldar Joi")
 
 	print ""
 	print random.choice( byeArray )
