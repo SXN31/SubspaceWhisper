@@ -34,7 +34,7 @@ for item in final_list:
 #        p.write("echo exit\n")
 
 
-    command = "wget "+item+""
-    #os.system(command)
-    print command
+    command = "wget --delete-after "+item+""
+    os.system(command)
+    #print command
     time.sleep(random.uniform(.1,2))
