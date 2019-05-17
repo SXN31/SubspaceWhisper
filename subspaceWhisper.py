@@ -1324,7 +1324,7 @@ def MainMenu():
 	
 	# Wherever you are on this floating space orb we call home, I hope you are well
 
-	byeArray = ("Bye!", "Ciao!", "Adios!", "Aloha!", "Hei hei!", "Bless bless!", "Hej da!", "Tschuss!", "Adieu!", "Cheers!", "Peace and long life.", "Live long and prosper.", "Dif tor heh smusma", "Qapla!,", "maj ram", "ylnajchu", "Jolan-tru", "bjavt vatub", "Peldar Joi")
+	byeArray = ("Bye!", "Ciao!", "Adios!", "Aloha!", "Hei hei!", "Bless bless!", "Hej da!", "Tschuss!", "Adieu!", "Cheers!", "Peace and long life.", "Live long and prosper.", "Dif tor heh smusma", "Qapla!", "maj ram", "ylnajchu", "Jolan-tru", "bjavt vatub", "Peldar Joi")
 
 	print ""
 	print random.choice( byeArray )
