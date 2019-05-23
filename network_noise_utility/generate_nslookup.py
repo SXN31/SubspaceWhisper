@@ -4,7 +4,7 @@ import os, random, time
 os.system("echo test")
 
 final_list = []
-with open("network.txt", 'r') as n:
+with open("nslookup.txt", 'r') as n:
     for l in n:
         l2 = l.strip()
         if l2 and len(l2) > 0:
@@ -35,7 +35,7 @@ while True:
 #        p.write("echo exit\n")
 
 
-        command = "wget --delete-after "+item+""
+        command = "nslookup "+item+""
         os.system(command)
     #print command
-        time.sleep(random.uniform(.1,2))
+        time.sleep(random.uniform(1,5))
